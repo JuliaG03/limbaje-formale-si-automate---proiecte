@@ -1,17 +1,35 @@
-tranzitii_initiale = []
-ramura = []
-urmatoare = []
+#template pentru citirea din fisier (ex.txt):
+#------------------------
+
+#stare a    litera din alfabetul automatului    stare b
+#stare x    litera din alfabetul automatului    stare s
+#    .
+#    .
+#    .
+#    .
+# stare y   litera din alfabetul automatului    stare z
+# stare x stare z      ( starile finale - pe ultima linie a fisierului)
+
+
+
+
+
+
+
+tranzitie_start = []
+litera = []
+tranzitie_urm = []
 stari_finale = []
 
 
-with open('det.txt') as f:
+with open('ex.txt') as f:
     for x in f:
         y = x.split()
-        if len(y) == 3:
-            tranzitii_initiale.append(y[0])
-            ramura.append(y[1])
-            urmatoare.append(y[2])
-        elif len(y) == 2:
+        if len(y) == 3:                     #de modificat
+            tranzitie_start.append(y[0])
+            litera.append(y[1])
+            tranzitie_urm.append(y[2])
+        else:
             stari_finale.append(y[0])
             stari_finale.append(y[1])
 
@@ -19,14 +37,14 @@ with open('det.txt') as f:
 
 cuvant = input("Dati Cuvantul :   ")
 drum = []
-stare_curenta = tranzitii_initiale[0]
+stare_curenta = tranzitie_start[0]
 drum.append(stare_curenta)
 for cuv in cuvant:
     ok = 0
-    for si in range(len(tranzitii_initiale)):
+    for a in range(len(tranzitie_start)):
         if ok == 0:
-            if ((stare_curenta == tranzitii_initiale[si]) & (ramura[si] == cuv)):
-                stare_curenta = urmatoare[si]
+            if ((stare_curenta == tranzitie_start[a]) & (litera[a] == cuv)):
+                stare_curenta = tranzitie_urm[a]
                 drum.append(stare_curenta)
                 ok = 1
             else:
