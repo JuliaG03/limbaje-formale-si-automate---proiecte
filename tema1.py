@@ -22,7 +22,7 @@ tranzitie_urm = []
 stari_finale = []
 
 f = open("ex.txt", "r")
-y =[[x for x in linie.split()] for linie in f.read().split('\n')]  #f.readlines()
+y =[[x for x in linie.split()] for linie in f.read().split('\n')]
 f.close()
 stari_finale = y[len(y)-1]
 y.remove(y[len(y)-1])
