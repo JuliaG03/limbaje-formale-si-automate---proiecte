@@ -21,18 +21,22 @@ litera = []
 tranzitie_urm = []
 stari_finale = []
 
+f = open("ex.txt", "r")
+y =[[x for x in linie.split()] for linie in f.read().split('\n')]  #f.readlines()
+f.close()
+stari_finale = y[len(y)-1]
+y.remove(y[len(y)-1])
 
-with open('ex.txt') as f:
-    for x in f:
-        y = x.split()
-        if len(y) == 3:                     #de modificat
-            tranzitie_start.append(y[0])
-            litera.append(y[1])
-            tranzitie_urm.append(y[2])
-        else:
-            stari_finale.append(y[0])
-            stari_finale.append(y[1])
 
+
+for i in range(len(y)):
+    tranzitie_start.append(y[i][0])
+    litera.append(y[i][1])
+    tranzitie_urm.append(y[i][2])
+
+print(tranzitie_start)
+print(litera)
+print(tranzitie_urm)
 
 
 cuvant = input("Dati Cuvantul :   ")
@@ -56,7 +60,7 @@ if drum[len(drum)-1] not in stari_finale:
     print("Cuvant neacceptat")
     print(drum)
 else:
+    print("Cuvant acceptat.")
+    print("Drumul final este :")
     for i in range(len(drum)-1):
-        print("Cuvant acceptat.")
-        print("Drumul final este :")
         print(drum[i] + "->" + drum[i+1])
