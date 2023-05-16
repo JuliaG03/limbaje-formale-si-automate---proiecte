@@ -21,10 +21,10 @@ gramatica = {
     'C': [('b', 'D'), ('b', 'B')],
     'D': [('c', 'D'), 'l'],
     'E': ['l']
-}
+            }
 
 start_symbol = 'S'
-cuvant = "aabbcc"
+cuvant = "aabbdcc"
 
 if not valideaza(gramatica, start_symbol, cuvant):
     print(f"Cuvant '{cuvant}' invalid")
